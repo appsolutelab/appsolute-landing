@@ -1,0 +1,43 @@
+/* Hero di appsolute: simbolo grande in una cornice, card del progetto sfalsata sopra. */
+.co-hero-stage { position: relative; max-width: 520px; margin-inline: auto; }
+.co-hero-art { display: grid; place-items: center; aspect-ratio: 4 / 3; border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-raised); }
+/* Simbolo come maschera su --ink, come .co-logo; su desktop la card ne sfiora solo la fascia bassa. */
+.co-hero-mark { width: 38%; margin-bottom: var(--space-8); aspect-ratio: 686 / 678; background: var(--ink); mask: url("./assets/mark.svg") center / contain no-repeat; -webkit-mask: url("./assets/mark.svg") center / contain no-repeat; }
+/* L'ombra la porta la Card (tone floating), che ha anche il raggio: sul wrapper usciva squadrata. */
+.co-hero-card { position: relative; margin: var(--space-4) var(--space-3) 0; }
+
+@media (min-width: 900px) {
+  .co-hero-card { margin-top: calc(var(--space-8) * -1); }
+  .co-hero-stage { margin-inline: 0; }
+  .co-hero-art { margin-right: var(--space-8); }
+  .co-hero-card { margin-inline: var(--space-8) 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Ingresso scaglionato: solo "from" + backwards, così a fine animazione non resta nessun transform. */
+  .ap-hero .ap-hero-text > *, .ap-hero .co-hero-stage { animation: co-hero-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+  .ap-hero .ap-hero-text > :nth-child(2) { animation-delay: 0.08s; }
+  .ap-hero .ap-hero-text > :nth-child(3) { animation-delay: 0.16s; }
+  .ap-hero .ap-hero-text > :nth-child(4) { animation-delay: 0.24s; }
+  .ap-hero .ap-hero-text > :nth-child(5) { animation-delay: 0.32s; }
+  .ap-hero .co-hero-stage { animation-delay: 0.4s; }
+}
+
+/* Solo desktop con mouse: su telefono e tablet il float continuo distrae e consuma batteria senza aggiungere nulla. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 900px) and (hover: hover) and (pointer: fine) {
+  /* Float continuo (transform); la parallasse usa "translate", così le due cose non si pestano. */
+  .co-hero-art { animation: co-hero-float 9s ease-in-out infinite alternate; }
+  .co-hero-card { animation: co-hero-float 7s ease-in-out -2s infinite alternate-reverse; }
+  /* Mentre la si usa, la card sta ferma: i bersagli non si muovono sotto il puntatore o il focus. */
+  .co-hero-card:hover, .co-hero-card:focus-within { animation-play-state: paused; }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  /* --co-hero-px / --co-hero-py vanno da -0.5 a 0.5: li aggiorna HeroVisual al movimento del mouse. */
+  .co-hero-art, .co-hero-card { transition: translate 0.4s ease-out; }
+  .co-hero-art { translate: calc(var(--co-hero-px, 0) * var(--space-3)) calc(var(--co-hero-py, 0) * var(--space-3)); }
+  .co-hero-card { translate: calc(var(--co-hero-px, 0) * var(--space-3) * -1) calc(var(--co-hero-py, 0) * var(--space-3) * -1); }
+}
+
+@keyframes co-hero-in { from { opacity: 0; transform: translateY(var(--space-6)); } }
+@keyframes co-hero-float { from { transform: translateY(var(--space-1)); } to { transform: translateY(calc(var(--space-1) * -1)); } }

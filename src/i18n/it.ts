@@ -17,22 +17,24 @@ export const it = {
     code: "Codice",
   },
   hero: {
-    eyebrow: "Gratis e open source",
-    title: "App gratuite e open source, nate a scuola",
+    eyebrow: "Dalla scuola, in pubblico",
+    title: "Sei studenti. Un'app vera. Gratis.",
+    status: "In sviluppo · prima versione prevista a gennaio 2027",
     lead: "Siamo sei studenti dell'ITIS G. Cardano di Pavia. Lavoriamo come una piccola azienda per imparare a gestire un progetto vero.",
-    primary: "Vedi i progetti",
+    primary: "Scopri WingPal",
     secondary: "Vedi il codice",
+    card: "Calendario, note e attività, collegati.",
   },
   projects: {
     eyebrow: "Progetti",
-    title: "Il nostro primo progetto",
-    lead: "Per ora ne abbiamo uno solo. Ci lavoriamo con calma, in pubblico.",
+    title: "WingPal, il nostro primo progetto",
+    points: ["Funziona in locale", "Senza account", "Open source, licenza AGPL-3.0"],
     items: [
       {
         name: "WingPal",
         description: "Tiene collegati calendario, note e attività. Funziona in locale e senza account. Licenza AGPL-3.0.",
-        status: "In sviluppo",
-        linkLabel: "Vai alla pagina di WingPal",
+        status: "In sviluppo · prima versione prevista a gennaio 2027",
+        linkLabel: "Scopri WingPal",
         href: "https://appsolutelab.github.io/wingpal-landing/",
       },
     ],
@@ -41,7 +43,7 @@ export const it = {
     eyebrow: "Principi",
     title: "Come lavoriamo",
     items: [
-      { title: "Gratuito e open source", text: "Le app che sviluppiamo sono gratuite e hanno una licenza open source." },
+      { title: "Gratis e open source", text: "Le app che sviluppiamo sono gratuite e hanno una licenza open source." },
       { title: "Onesti", text: "Facciamo solo promesse che possiamo verificare. Se una cosa non c'è ancora, lo scriviamo." },
       { title: "Leggibile per tutti", text: "Testo pensato per chi legge con difficoltà, contrasto almeno 4.5:1, tema chiaro e scuro." },
       { title: "Leggeri", text: "Poche dipendenze e animazioni brevi. Un sito o un'app non devono pesare." },
@@ -50,6 +52,12 @@ export const it = {
   about: {
     eyebrow: "Chi siamo",
     title: "Un gruppo di sei studenti",
+    stats: [
+      { value: "6", label: "studenti" },
+      { value: "1", label: "progetto" },
+      { value: "GPOI", label: "gestione progetto e organizzazione d'impresa" },
+      { value: "Pavia", label: "ITIS G. Cardano" },
+    ],
     paragraphs: [
       "appsolute è nato a scuola, dentro la materia GPOI: gestione progetto e organizzazione d'impresa. La classe è divisa in gruppi e ogni gruppo lavora come una piccola azienda, con un suo progetto.",
       "Il nostro obiettivo è imparare a gestire un progetto, non vendere. Per questo le app sono gratuite e il lavoro è pubblico.",
@@ -59,13 +67,19 @@ export const it = {
   code: {
     eyebrow: "Codice",
     title: "Il lavoro è pubblico",
-    lead: "Trovi tutto sull'organizzazione GitHub di appsolute. Il codice dell'app WingPal non è ancora pubblico: per ora ci sono i due siti.",
+    lead: "Il codice dell'app WingPal non è ancora pubblico: per ora ci sono i due siti.",
     repoLink: "Apri su GitHub",
-    orgLink: "Vedi l'organizzazione su GitHub",
     repos: [
       { name: "appsolutelab/wingpal-landing", description: "La landing page di WingPal." },
       { name: "appsolutelab/appsolute-landing", description: "Questo sito." },
     ],
+  },
+  follow: {
+    eyebrow: "Segui il lavoro",
+    title: "Curioso di vedere come va?",
+    lead: "WingPal è in sviluppo e la prima versione è prevista a gennaio 2027. Intanto scoprilo e guarda come lavoriamo.",
+    primary: "Scopri WingPal",
+    secondary: "Segui su GitHub",
   },
   footer: {
     tagline: "App gratuite e open source, nate a scuola.",
@@ -73,6 +87,7 @@ export const it = {
     page: "Pagina",
     project: "Progetto",
     github: "GitHub",
+    wingpal: "WingPal",
     privacy: "Privacy",
     bottom: "Un progetto dell'ITIS G. Cardano di Pavia. Niente pubblicità, niente tracciamento.",
   },

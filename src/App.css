@@ -3,14 +3,45 @@
 /* Logo come maschera: prende il colore da --ink, quindi segue anche il tema forzato dal pulsante. */
 .co-logo { display: block; background: var(--ink); mask: url("./assets/mark.svg") center / contain no-repeat; -webkit-mask: url("./assets/mark.svg") center / contain no-repeat; }
 
-/* Chi siamo: simbolo + scritta, stessa altezza (48px) */
-.co-about-logo { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
+/* Chi siamo: stesso schema di WingPal, logo (simbolo + scritta, stessa altezza 48px) sopra il testo */
+.co-about { display: grid; gap: var(--space-8); align-items: start; }
+.co-about-text { display: flex; flex-direction: column; gap: var(--space-4); max-width: 640px; }
+.co-about-logo { display: flex; align-items: center; gap: var(--space-3); }
 .co-about-mark, .co-about-wordmark { height: 48px; background: var(--ink); }
 .co-about-mark { aspect-ratio: 686 / 678; mask: url("./assets/mark.svg") center / contain no-repeat; -webkit-mask: url("./assets/mark.svg") center / contain no-repeat; }
 .co-about-wordmark { aspect-ratio: 1124 / 300; mask: url("./assets/wordmark.svg") center / contain no-repeat; -webkit-mask: url("./assets/wordmark.svg") center / contain no-repeat; }
 
-/* Bottone verso l'organizzazione, sotto le card del codice */
-.co-org { display: flex; }
+/* Vetrina WingPal: immagine + testo. Chiaro/scuro come nella landing del prodotto. */
+.co-showcase { display: grid; gap: var(--space-8); align-items: center; }
+.co-showcase-art { border-radius: var(--radius-lg); box-shadow: var(--shadow-raised); overflow: hidden; }
+.co-img { display: block; width: 100%; height: auto; }
+.co-img-dark, [data-theme="dark"] .co-img-light { display: none; }
+[data-theme="dark"] .co-img-dark { display: block; }
+.co-showcase-text { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+.co-showcase-desc { margin: 0; font: var(--text-body); color: var(--ink-muted); max-width: 56ch; }
+.co-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.co-points li { display: flex; align-items: center; gap: var(--space-2); font: var(--text-body); color: var(--ink); }
+.co-points svg { flex: none; color: var(--accent); }
+
+/* Chi siamo: a destra i numeri veri, ognuno con un filetto d'accento */
+.co-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+.co-stat { border-top: 2px solid var(--accent); padding-top: var(--space-3); min-width: 0; }
+.co-stat-value { margin: 0; font: var(--text-display); color: var(--ink); overflow-wrap: anywhere; }
+.co-stat-label { margin: var(--space-1) 0 0; font: var(--text-small); color: var(--ink-muted); }
+
+/* Card leggera dell'hero */
+.co-hero-card-name { margin: 0; font: var(--text-heading); color: var(--ink); }
+.co-hero-card-text { margin: var(--space-1) 0 var(--space-2); font: var(--text-small); color: var(--ink-muted); }
+
+/* Chiusura: due bottoni centrati */
+.co-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4); }
+/* Filetto sopra la chiusura, come nella landing di WingPal (lì è marigold) */
+#segui .ap-section-head::before { content: ""; width: var(--space-12); margin-bottom: var(--space-2); border-top: var(--space-1) solid var(--accent); border-radius: var(--radius-pill); }
+
+@media (min-width: 900px) {
+  .co-showcase { grid-template-columns: 1.2fr 1fr; gap: var(--space-12); }
+  .co-about { grid-template-columns: 1.3fr 1fr; gap: var(--space-12); align-items: center; }
+}
 
 /* Scorrimento morbido verso le ancore, solo per chi non ha chiesto meno movimento */
 @media (prefers-reduced-motion: no-preference) {
