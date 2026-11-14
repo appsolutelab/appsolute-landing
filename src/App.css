@@ -1,0 +1,18 @@
+/* Stili della sola landing appsolute (prefisso co-). Colori e spaziature vengono dai token. */
+
+/* Logo come maschera: prende il colore da --ink, quindi segue anche il tema forzato dal pulsante. */
+.co-logo { display: block; background: var(--ink); mask: url("./assets/mark.svg") center / contain no-repeat; -webkit-mask: url("./assets/mark.svg") center / contain no-repeat; }
+
+/* Chi siamo: simbolo + scritta, stessa altezza (48px) */
+.co-about-logo { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
+.co-about-mark, .co-about-wordmark { height: 48px; background: var(--ink); }
+.co-about-mark { aspect-ratio: 686 / 678; mask: url("./assets/mark.svg") center / contain no-repeat; -webkit-mask: url("./assets/mark.svg") center / contain no-repeat; }
+.co-about-wordmark { aspect-ratio: 1124 / 300; mask: url("./assets/wordmark.svg") center / contain no-repeat; -webkit-mask: url("./assets/wordmark.svg") center / contain no-repeat; }
+
+/* Bottone verso l'organizzazione, sotto le card del codice */
+.co-org { display: flex; }
+
+/* Scorrimento morbido verso le ancore, solo per chi non ha chiesto meno movimento */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
