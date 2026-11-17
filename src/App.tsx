@@ -83,7 +83,7 @@ export function App({ lang, page = "home" }: { lang: Lang; page?: "home" | "priv
   return (
     <>
       <Navbar
-        brand="appsolute"
+        brand="AppSolute"
         logo={<Logo />}
         homeHref={home(lang)}
         links={links}
@@ -139,7 +139,7 @@ export function App({ lang, page = "home" }: { lang: Lang; page?: "home" | "priv
         <Section id="chi-siamo" eyebrow={t.about.eyebrow} title={t.about.title}>
           <div className="co-about">
             <div className="co-about-text">
-              <div className="co-about-logo" role="img" aria-label="appsolute"><span className="co-about-mark" /><span className="co-about-wordmark" /></div>
+              <div className="co-about-logo" role="img" aria-label="AppSolute"><span className="co-about-mark" /><span className="co-about-wordmark" /></div>
               <Prose>
                 {t.about.paragraphs.map((p) => <p key={p}>{p}</p>)}
               </Prose>
@@ -167,7 +167,7 @@ export function App({ lang, page = "home" }: { lang: Lang; page?: "home" | "priv
         </>}
       </main>
       <Footer
-        brand="appsolute"
+        brand="AppSolute"
         logo={<Logo />}
         tagline={t.footer.tagline}
         navLabel={t.footer.nav}

@@ -58,7 +58,7 @@ export const en: Texts = {
       { value: "Pavia", label: "ITIS G. Cardano" },
     ],
     paragraphs: [
-      "appsolute was born at school, in the GPOI subject: project management and business organization. The class is split into groups and each group works like a small company, with its own project.",
+      "AppSolute was born at school, in the GPOI subject: project management and business organization. The class is split into groups and each group works like a small company, with its own project.",
       "Our goal is to learn how to run a project, not to sell. That is why the apps are free and the work is public.",
       "We use issues and pull requests on GitHub, and we have our own design system, shared by all our projects.",
     ],
@@ -95,7 +95,7 @@ export const en: Texts = {
     lead: "This site uses no cookies, has no forms and does not track its visitors. Below you will find the little data that is still processed.",
     updated: "Last updated: 14 November 2026",
     sections: [
-      { title: "Data controller", text: "The controller is appsolute, a project of ITIS G. Cardano in Pavia, Italy. For questions about this policy or to exercise your rights, contact us through our repository.", link: { label: "Open an issue on GitHub", href: "https://github.com/appsolutelab/appsolute-landing/issues" } },
+      { title: "Data controller", text: "The controller is AppSolute, a project of ITIS G. Cardano in Pavia, Italy. For questions about this policy or to exercise your rights, contact us through our repository.", link: { label: "Open an issue on GitHub", href: "https://github.com/appsolutelab/appsolute-landing/issues" } },
       { title: "Hosting", text: "The site is hosted on GitHub Pages. Like any web server, GitHub records the IP address of visitors and some technical data from the browser, for security and to run the service. We have no access to this data. GitHub may also process it in the United States.", link: { label: "GitHub privacy statement", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" } },
       { title: "Fonts", text: "The fonts on this page are downloaded from Google Fonts. To deliver them, Google receives your IP address.", link: { label: "Google Fonts privacy", href: "https://developers.google.com/fonts/faq/privacy" } },
       { title: "Preferences saved in your browser", text: "If you switch between the light and dark theme, your choice is saved in your browser under the key appsolute-theme. It stays on your device, is not sent to us, and you can delete it from your browser settings. We use no cookies and no analytics." },

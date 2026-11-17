@@ -59,7 +59,7 @@ export const it = {
       { value: "Pavia", label: "ITIS G. Cardano" },
     ],
     paragraphs: [
-      "appsolute è nato a scuola, dentro la materia GPOI: gestione progetto e organizzazione d'impresa. La classe è divisa in gruppi e ogni gruppo lavora come una piccola azienda, con un suo progetto.",
+      "AppSolute è nato a scuola, dentro la materia GPOI: gestione progetto e organizzazione d'impresa. La classe è divisa in gruppi e ogni gruppo lavora come una piccola azienda, con un suo progetto.",
       "Il nostro obiettivo è imparare a gestire un progetto, non vendere. Per questo le app sono gratuite e il lavoro è pubblico.",
       "Usiamo issue e pull request su GitHub e abbiamo un design system nostro, condiviso da tutti i progetti.",
     ],
@@ -96,7 +96,7 @@ export const it = {
     lead: "Questo sito non usa cookie, non ha moduli e non traccia chi lo visita. Qui sotto trovi i pochi dati che vengono comunque trattati.",
     updated: "Ultimo aggiornamento: 14 novembre 2026",
     sections: [
-      { title: "Titolare del trattamento", text: "Il titolare è appsolute, progetto dell'ITIS G. Cardano di Pavia. Per domande su questa informativa o per esercitare i tuoi diritti, contattaci dal nostro repository.", link: { label: "Apri una segnalazione su GitHub", href: "https://github.com/appsolutelab/appsolute-landing/issues" } },
+      { title: "Titolare del trattamento", text: "Il titolare è AppSolute, progetto dell'ITIS G. Cardano di Pavia. Per domande su questa informativa o per esercitare i tuoi diritti, contattaci dal nostro repository.", link: { label: "Apri una segnalazione su GitHub", href: "https://github.com/appsolutelab/appsolute-landing/issues" } },
       { title: "Hosting", text: "Il sito è ospitato su GitHub Pages. Come ogni server web, GitHub registra l'indirizzo IP di chi visita la pagina e alcuni dati tecnici del browser, per sicurezza e per far funzionare il servizio. Noi non abbiamo accesso a questi dati. GitHub può trattarli anche negli Stati Uniti.", link: { label: "Informativa sulla privacy di GitHub", href: "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" } },
       { title: "Caratteri tipografici", text: "I caratteri della pagina vengono scaricati da Google Fonts. Per inviarli, Google riceve il tuo indirizzo IP.", link: { label: "Privacy di Google Fonts", href: "https://developers.google.com/fonts/faq/privacy" } },
       { title: "Preferenze salvate nel browser", text: "Se cambi il tema chiaro o scuro, la scelta viene salvata nel tuo browser con la chiave appsolute-theme. Resta sul tuo dispositivo, non ci viene inviata, e puoi cancellarla dalle impostazioni del browser. Non usiamo cookie e non usiamo statistiche." },
