@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./ui/appsolute/styles.css";
 import "./App.css";
 import "./motion.css";
+import "./backdrop.css";
 import { App } from "./App";
 import { initMotion } from "./motion";
 

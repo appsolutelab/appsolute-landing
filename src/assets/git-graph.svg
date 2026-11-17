@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round">
+  <!-- Illustrazione originale: un ramo principale con due rami che si riuniscono. Usata come maschera (colore dai token). -->
+  <path d="M12 116H388"/>
+  <path d="M70 116C100 116 100 52 130 52H232C262 52 262 116 292 116"/>
+  <path d="M164 52C188 52 188 16 212 16H236" stroke-dasharray="2 9"/>
+  <path d="M180 116C200 116 200 140 220 140H250C270 140 270 116 290 116" opacity=".55"/>
+  <g fill="#000"><circle cx="40" cy="116" r="7"/><circle cx="130" cy="52" r="6"/><circle cx="196" cy="52" r="6"/><circle cx="232" cy="52" r="6"/><circle cx="292" cy="116" r="9"/><circle cx="352" cy="116" r="7"/></g>
+  <g fill="#000"><circle cx="110" cy="116" r="7"/><circle cx="236" cy="16" r="6"/><circle cx="235" cy="140" r="6" opacity=".55"/><circle cx="250" cy="116" r="7"/></g>
+</svg>

@@ -1,0 +1,165 @@
+/* Sfondi e illustrazioni decorative della landing (prefisso co-).
+   Solo token: le tinte nascono da color-mix con --ink, --line, --bg e --surface-raised,
+   quindi seguono da sole il tema chiaro e scuro (nessun override per tema).
+   Tutto è fermo (nessuna animazione nuova), sta dietro al contenuto (z-index -1 dentro main),
+   non riceve il puntatore e non cambia l'altezza di nessuna sezione.
+   Prestazioni: niente mask né filter sui livelli a tutta larghezza (in Firefox ogni maschera è una
+   superficie a parte, ridisegnata mentre il reveal muove le card sopra: scatti e tile che lampeggiano).
+   Le sfumature sono veli di --bg dentro lo stesso background, un solo livello per sezione. */
+
+main#contenuto { position: relative; isolation: isolate; overflow-x: clip; }
+main > .ap-hero, main > .ap-section, #codice .ap-section-inner { position: relative; }
+
+.ap-hero::before, #progetti::before, #principi::before, #chi-siamo::before, #codice::before,
+#codice .ap-section-inner::before, #segui::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+}
+
+/* Le fasce di sfondo escono dal contenitore da 1120px e coprono tutta la larghezza. */
+.ap-hero::before, #progetti::before, #principi::before,
+#chi-siamo::before, #codice::before, #segui::before { inset: 0 calc(50% - 50vw); }
+
+/* Griglia di punti condivisa (hero e codice). */
+:root { --co-dots: radial-gradient(circle, color-mix(in oklab, var(--ink) 20%, transparent) 1.2px, transparent 1.7px) center / var(--space-6) var(--space-6); }
+
+/* 1. Hero: una luce morbida dietro la cornice, un'ombra larga in basso a sinistra (la luce del
+   neumorfismo viene da in alto a sinistra) e una griglia di punti solo intorno alla cornice.
+   Dall'alto: luce, ombra, velo di --bg che lascia i punti solo nell'ellisse, punti. */
+.ap-hero::before {
+  --co-dots-area: radial-gradient(ellipse 30% 58% at 72% 50%, transparent 40%, var(--bg) 78%);
+  background:
+    radial-gradient(ellipse 34% 62% at 70% 44%,
+      var(--surface-raised) 0%,
+      color-mix(in oklab, var(--surface-raised) 75%, transparent) 30%,
+      color-mix(in oklab, var(--surface-raised) 35%, transparent) 58%,
+      color-mix(in oklab, var(--surface-raised) 10%, transparent) 80%,
+      transparent 100%),
+    radial-gradient(ellipse 46% 48% at 22% 100%,
+      color-mix(in oklab, var(--ink) 6%, transparent) 0%,
+      color-mix(in oklab, var(--ink) 3%, transparent) 45%,
+      color-mix(in oklab, var(--ink) 1%, transparent) 75%,
+      transparent 100%),
+    var(--co-dots-area),
+    var(--co-dots);
+}
+
+/* Cornice dell'hero: orbite intorno al simbolo (è un razzo) e due "pianeti", uno d'accento.
+   La cornice fluttua (hero.css): bordi sfumati su 1px, così spostandosi di frazioni di pixel
+   le linee non sfarfallano sugli schermi a bassa densità. */
+.co-hero-stage .co-hero-art {
+  --co-c: 50% calc(50% - var(--space-4));
+  --co-ring: color-mix(in oklab, var(--ink) 13%, transparent);
+  --co-ring-2: color-mix(in oklab, var(--ink) 8%, transparent);
+  background-image:
+    radial-gradient(circle at 76% 17%, var(--accent) 0 4.5px, transparent 5.5px),
+    radial-gradient(circle at 26% 61%, color-mix(in oklab, var(--ink) 40%, transparent) 0 3.5px, transparent 4.5px),
+    radial-gradient(circle at var(--co-c),
+      transparent 38%, var(--co-ring) calc(38% + 1px), transparent calc(38% + 2.5px),
+      transparent 54%, var(--co-ring) calc(54% + 1px), transparent calc(54% + 2.5px),
+      transparent 71%, var(--co-ring-2) calc(71% + 1px), transparent calc(71% + 2.5px)),
+    radial-gradient(circle at var(--co-c),
+      var(--surface-raised) 0%,
+      color-mix(in oklab, var(--surface-raised) 70%, transparent) 22%,
+      color-mix(in oklab, var(--surface-raised) 25%, transparent) 42%,
+      transparent 62%);
+}
+
+/* 2. Progetti: luce dietro l'immagine di WingPal e l'icona vera dell'app sopra il testo. */
+#progetti::before {
+  background:
+    radial-gradient(ellipse 36% 46% at 32% 64%,
+      var(--surface-raised) 0%,
+      color-mix(in oklab, var(--surface-raised) 70%, transparent) 35%,
+      color-mix(in oklab, var(--surface-raised) 25%, transparent) 65%,
+      transparent 100%),
+    radial-gradient(ellipse 30% 40% at 88% 30%,
+      color-mix(in oklab, var(--ink) 5%, transparent) 0%,
+      color-mix(in oklab, var(--ink) 2%, transparent) 50%,
+      transparent 100%);
+}
+.co-showcase-icon { display: block; width: 64px; height: auto; border-radius: 24%; box-shadow: var(--shadow-raised-sm); }
+
+/* 3. Principi: griglia fine (le linee del design system) intorno alle card, che sfuma in alto e in
+   basso e resta libera dietro il titolo. */
+#principi::before {
+  --co-grid: color-mix(in oklab, var(--line) 85%, transparent);
+  --co-hole: radial-gradient(ellipse 520px 150px at calc(50% - 380px) 120px, var(--bg) 45%, transparent 100%);
+  background:
+    linear-gradient(var(--bg), transparent 120px, transparent calc(100% - 120px), var(--bg)),
+    var(--co-hole),
+    linear-gradient(to right, var(--co-grid) 1px, transparent 1px) center top / var(--space-12) var(--space-12),
+    linear-gradient(to bottom, var(--co-grid) 1px, transparent 1px) center top / var(--space-12) var(--space-12);
+}
+
+/* 4. Chi siamo: luce dietro i numeri e un'ombra larga dietro il testo, come una scrivania illuminata. */
+#chi-siamo::before {
+  background:
+    radial-gradient(ellipse 30% 48% at 72% 58%,
+      var(--surface-raised) 0%,
+      color-mix(in oklab, var(--surface-raised) 65%, transparent) 35%,
+      color-mix(in oklab, var(--surface-raised) 20%, transparent) 65%,
+      transparent 100%),
+    radial-gradient(ellipse 40% 55% at 10% 40%,
+      color-mix(in oklab, var(--ink) 5%, transparent) 0%,
+      color-mix(in oklab, var(--ink) 2%, transparent) 50%,
+      transparent 100%);
+}
+
+/* 5. Codice: un grafo di commit (illustrazione originale, assets/git-graph.svg) nello spazio vuoto
+   a destra del titolo, più una griglia di punti tenue sotto le card. Il grafo resta una maschera:
+   è piccolo (400x160) e fermo, quindi costa poco. */
+#codice::before {
+  --co-dots: radial-gradient(circle, color-mix(in oklab, var(--ink) 14%, transparent) 1.2px, transparent 1.7px) center / var(--space-6) var(--space-6);
+  background:
+    radial-gradient(ellipse 40% 60% at 50% 72%, transparent 30%, var(--bg) 80%),
+    var(--co-dots);
+}
+#codice .ap-section-inner::before { display: none; }
+
+@media (min-width: 900px) {
+  #codice .ap-section-inner::before {
+    display: block; top: 0; right: 0; width: min(400px, 40%); aspect-ratio: 400 / 160;
+    background: color-mix(in oklab, var(--ink) 30%, transparent);
+    -webkit-mask: url("./assets/git-graph.svg") center / contain no-repeat;
+    mask: url("./assets/git-graph.svg") center / contain no-repeat;
+  }
+}
+
+/* 6. Chiusura: anelli che salgono dal basso (liberi dietro il testo) e una luce dietro il titolo.
+   Anelli in --line pieno: color-mix con transparent dentro un repeating-gradient si rompe in Firefox. */
+#segui::before {
+  --co-ring-w: calc(var(--space-12) * 2);
+  background:
+    radial-gradient(ellipse 34% 70% at 50% 55%,
+      var(--surface-raised) 0%,
+      color-mix(in oklab, var(--surface-raised) 70%, transparent) 30%,
+      color-mix(in oklab, var(--surface-raised) 25%, transparent) 60%,
+      transparent 100%),
+    radial-gradient(ellipse 380px 190px at 50% 50%, var(--bg) 55%, transparent 100%),
+    linear-gradient(var(--bg), transparent 120px),
+    repeating-radial-gradient(circle at 50% 120%,
+      transparent 0, transparent calc(var(--co-ring-w) - 2.5px),
+      var(--line) calc(var(--co-ring-w) - 1.5px), transparent var(--co-ring-w));
+}
+
+/* Telefono e tablet: l'hero è in colonna (media sotto il testo), quindi luce e punti scendono. */
+@media (max-width: 899px) {
+  .ap-hero::before {
+    --co-dots-area: radial-gradient(ellipse 60% 24% at 50% 80%, transparent 40%, var(--bg) 85%);
+    background:
+      radial-gradient(ellipse 70% 32% at 50% 78%,
+        var(--surface-raised) 0%,
+        color-mix(in oklab, var(--surface-raised) 60%, transparent) 40%,
+        transparent 100%),
+      var(--co-dots-area),
+      var(--co-dots);
+  }
+  #principi::before { --co-hole: linear-gradient(transparent, transparent); }
+}
+
+/* Colori forzati (es. contrasto elevato di Windows): solo contenuto, niente decorazioni. */
+@media (forced-colors: active) {
+  .ap-hero::before, #progetti::before, #principi::before, #chi-siamo::before, #codice::before,
+  #codice .ap-section-inner::before, #segui::before { display: none; }
+  .co-hero-stage .co-hero-art { background-image: none; }
+}

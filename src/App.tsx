@@ -9,6 +9,7 @@ import { it, type Texts } from "./i18n/it";
 import { en } from "./i18n/en";
 import heroLight from "./assets/hero-light.webp";
 import heroDark from "./assets/hero-dark.webp";
+import wingpalIcon from "./assets/wingpal-logo.svg";
 
 type Lang = "it" | "en";
 
@@ -118,6 +119,7 @@ export function App({ lang, page = "home" }: { lang: Lang; page?: "home" | "priv
               <img className="co-img co-img-dark" src={heroDark} alt="" width={1472} height={1104} loading="lazy" decoding="async" />
             </div>
             <div className="co-showcase-text">
+              <img className="co-showcase-icon" src={wingpalIcon} alt="" width={64} height={65} loading="lazy" decoding="async" />
               <Badge>{wingpal.status}</Badge>
               <p className="co-showcase-desc">{wingpal.description}</p>
               <ul className="co-points">
