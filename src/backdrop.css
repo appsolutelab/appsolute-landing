@@ -19,27 +19,26 @@ main > .ap-hero, main > .ap-section, #codice .ap-section-inner { position: relat
 .ap-hero::before, #progetti::before, #principi::before,
 #chi-siamo::before, #codice::before, #segui::before { inset: 0 calc(50% - 50vw); }
 
-/* Griglia di punti condivisa (hero e codice). */
-:root { --co-dots: radial-gradient(circle, color-mix(in oklab, var(--ink) 20%, transparent) 1.2px, transparent 1.7px) center / var(--space-6) var(--space-6); }
+/* Griglia di punti condivisa (hero, chi siamo e codice). */
+:root {
+  --co-dots: radial-gradient(circle, color-mix(in oklab, var(--ink) 18%, transparent) 1.2px, transparent 1.7px) center / var(--space-6) var(--space-6);
+  /* Dissolvenza in alto e in basso: nessun fondale finisce con un bordo netto al confine della sezione. */
+  --co-fade: linear-gradient(var(--bg), transparent 96px, transparent calc(100% - 96px), var(--bg));
+}
 
-/* 1. Hero: una luce morbida dietro la cornice, un'ombra larga in basso a sinistra (la luce del
-   neumorfismo viene da in alto a sinistra) e una griglia di punti solo intorno alla cornice.
-   Dall'alto: luce, ombra, velo di --bg che lascia i punti solo nell'ellisse, punti. */
+/* 1. Hero: una luce morbida dietro la cornice e una griglia di punti solo intorno alla cornice.
+   Dall'alto: dissolvenza ai bordi della sezione, luce, velo di --bg che lascia i punti solo
+   nell'ellisse, punti. */
 .ap-hero::before {
-  --co-dots-area: radial-gradient(ellipse 30% 58% at 72% 50%, transparent 40%, var(--bg) 78%);
   background:
-    radial-gradient(ellipse 34% 62% at 70% 44%,
+    var(--co-fade),
+    radial-gradient(ellipse 34% 60% at 72% 46%,
       var(--surface-raised) 0%,
       color-mix(in oklab, var(--surface-raised) 75%, transparent) 30%,
       color-mix(in oklab, var(--surface-raised) 35%, transparent) 58%,
       color-mix(in oklab, var(--surface-raised) 10%, transparent) 80%,
       transparent 100%),
-    radial-gradient(ellipse 46% 48% at 22% 100%,
-      color-mix(in oklab, var(--ink) 6%, transparent) 0%,
-      color-mix(in oklab, var(--ink) 3%, transparent) 45%,
-      color-mix(in oklab, var(--ink) 1%, transparent) 75%,
-      transparent 100%),
-    var(--co-dots-area),
+    radial-gradient(ellipse 32% 58% at 72% 48%, transparent 40%, var(--bg) 80%),
     var(--co-dots);
 }
 
@@ -67,6 +66,7 @@ main > .ap-hero, main > .ap-section, #codice .ap-section-inner { position: relat
 /* 2. Progetti: luce dietro l'immagine di WingPal e l'icona vera dell'app sopra il testo. */
 #progetti::before {
   background:
+    var(--co-fade),
     radial-gradient(ellipse 36% 46% at 32% 64%,
       var(--surface-raised) 0%,
       color-mix(in oklab, var(--surface-raised) 70%, transparent) 35%,
@@ -91,10 +91,11 @@ main > .ap-hero, main > .ap-section, #codice .ap-section-inner { position: relat
     linear-gradient(to bottom, var(--co-grid) 1px, transparent 1px) center top / var(--space-12) var(--space-12);
 }
 
-/* 4. Chi siamo: luce dietro i numeri e un'ombra larga dietro il testo, come una scrivania illuminata. */
+/* 4. Chi siamo: luce dietro i numeri, punti nell'angolo, ombra larga dietro il testo. */
 #chi-siamo::before {
   background:
-    radial-gradient(ellipse 30% 48% at 72% 58%,
+    var(--co-fade),
+    radial-gradient(ellipse 30% 50% at 74% 60%,
       var(--surface-raised) 0%,
       color-mix(in oklab, var(--surface-raised) 65%, transparent) 35%,
       color-mix(in oklab, var(--surface-raised) 20%, transparent) 65%,
@@ -102,7 +103,10 @@ main > .ap-hero, main > .ap-section, #codice .ap-section-inner { position: relat
     radial-gradient(ellipse 40% 55% at 10% 40%,
       color-mix(in oklab, var(--ink) 5%, transparent) 0%,
       color-mix(in oklab, var(--ink) 2%, transparent) 50%,
-      transparent 100%);
+      transparent 100%),
+    radial-gradient(ellipse 22% 40% at 96% 30%, transparent 30%, var(--bg) 100%),
+    linear-gradient(to right, var(--bg) 70%, transparent 90%),
+    var(--co-dots);
 }
 
 /* 5. Codice: un grafo di commit (illustrazione originale, assets/git-graph.svg) nello spazio vuoto
@@ -111,15 +115,16 @@ main > .ap-hero, main > .ap-section, #codice .ap-section-inner { position: relat
 #codice::before {
   --co-dots: radial-gradient(circle, color-mix(in oklab, var(--ink) 14%, transparent) 1.2px, transparent 1.7px) center / var(--space-6) var(--space-6);
   background:
+    var(--co-fade),
     radial-gradient(ellipse 40% 60% at 50% 72%, transparent 30%, var(--bg) 80%),
     var(--co-dots);
 }
 #codice .ap-section-inner::before { display: none; }
 
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
   #codice .ap-section-inner::before {
     display: block; top: 0; right: 0; width: min(400px, 40%); aspect-ratio: 400 / 160;
-    background: color-mix(in oklab, var(--ink) 30%, transparent);
+    background: color-mix(in oklab, var(--ink) 34%, transparent);
     -webkit-mask: url("./assets/git-graph.svg") center / contain no-repeat;
     mask: url("./assets/git-graph.svg") center / contain no-repeat;
   }
@@ -135,7 +140,7 @@ main > .ap-hero, main > .ap-section, #codice .ap-section-inner { position: relat
       color-mix(in oklab, var(--surface-raised) 70%, transparent) 30%,
       color-mix(in oklab, var(--surface-raised) 25%, transparent) 60%,
       transparent 100%),
-    radial-gradient(ellipse 380px 190px at 50% 50%, var(--bg) 55%, transparent 100%),
+    radial-gradient(ellipse 380px 200px at 50% 50%, var(--bg) 55%, transparent 100%),
     linear-gradient(var(--bg), transparent 120px),
     repeating-radial-gradient(circle at 50% 120%,
       transparent 0, transparent calc(var(--co-ring-w) - 2.5px),
@@ -145,13 +150,13 @@ main > .ap-hero, main > .ap-section, #codice .ap-section-inner { position: relat
 /* Telefono e tablet: l'hero è in colonna (media sotto il testo), quindi luce e punti scendono. */
 @media (max-width: 899px) {
   .ap-hero::before {
-    --co-dots-area: radial-gradient(ellipse 60% 24% at 50% 80%, transparent 40%, var(--bg) 85%);
     background:
-      radial-gradient(ellipse 70% 32% at 50% 78%,
+      var(--co-fade),
+      radial-gradient(ellipse 70% 30% at 50% 74%,
         var(--surface-raised) 0%,
         color-mix(in oklab, var(--surface-raised) 60%, transparent) 40%,
         transparent 100%),
-      var(--co-dots-area),
+      radial-gradient(ellipse 60% 26% at 50% 78%, transparent 40%, var(--bg) 85%),
       var(--co-dots);
   }
   #principi::before { --co-hole: linear-gradient(transparent, transparent); }
