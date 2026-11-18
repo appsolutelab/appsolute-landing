@@ -5,6 +5,8 @@
 .co-hero-mark { width: 38%; margin-bottom: var(--space-8); aspect-ratio: 686 / 678; background: var(--ink); mask: url("./assets/mark.svg") center / contain no-repeat; -webkit-mask: url("./assets/mark.svg") center / contain no-repeat; }
 /* L'ombra la porta la Card (tone floating), che ha anche il raggio: sul wrapper usciva squadrata. */
 .co-hero-card { position: relative; margin: var(--space-4) var(--space-3) 0; }
+/* Tutta la card è cliccabile: l'area del link si allarga alla card, ma resta un solo link (un solo tab, un solo nome). */
+.co-hero-card .ap-link::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-lg); }
 
 @media (min-width: 900px) {
   .co-hero-card { margin-top: calc(var(--space-8) * -1); }

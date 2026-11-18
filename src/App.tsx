@@ -2,7 +2,7 @@ import "./hero.css";
 import type { PointerEvent } from "react";
 import { Accessibility, Check, Code, Gift, ShieldCheck } from "lucide-react";
 import {
-  Badge, Button, Card, FeatureCard, Footer, Hero, LangSwitch, Navbar, Prose, RepoCard, Section, ThemeToggle,
+  ArrowRightIcon, Badge, Button, Card, FeatureCard, Footer, Hero, LangSwitch, Navbar, Prose, RepoCard, Section, ThemeToggle,
   useTheme,
 } from "./ui/appsolute";
 import { it, type Texts } from "./i18n/it";
@@ -43,7 +43,7 @@ function HeroVisual({ name, text, href, label }: { name: string; text: string; h
         <Card tone="floating" padding="md">
           <p className="co-hero-card-name">{name}</p>
           <p className="co-hero-card-text">{text}</p>
-          <a className="ap-link" href={href}>{label}</a>
+          <a className="ap-link" href={href}>{label}<ArrowRightIcon size={16} /></a>
         </Card>
       </div>
     </div>
